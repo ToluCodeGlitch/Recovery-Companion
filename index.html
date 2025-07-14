@@ -4,66 +4,54 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Recovery Companion</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(to bottom right, #dbeafe, #f0fdf4);
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url('https://images.unsplash.com/photo-1527766833261-b09c3163a791?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+      height: 100vh;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      min-height: 100vh;
+      align-items: center;
       text-align: center;
-      padding: 2rem;
+      padding: 0 20px;
     }
 
-    .prayer {
-      font-size: 1.2rem;
-      color: #374151;
-      margin-bottom: 3rem;
-      max-width: 600px;
-    }
-
-    .title {
+    h1 {
       font-size: 2.5rem;
-      font-weight: 600;
-      color: #1f2937;
       margin-bottom: 1rem;
+      letter-spacing: 1px;
     }
 
-    .subtitle {
+    p {
       font-size: 1.2rem;
-      color: #4b5563;
-      margin-bottom: 3rem;
+      max-width: 600px;
+      line-height: 1.8;
+      opacity: 0.9;
     }
 
-    .button {
-      background-color: #2563eb;
-      color: white;
-      border: none;
-      padding: 0.75rem 2rem;
-      border-radius: 8px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .button:hover {
-      background-color: #1e40af;
+    footer {
+      position: absolute;
+      bottom: 10px;
+      font-size: 0.8rem;
+      color: #ccc;
     }
   </style>
 </head>
 <body>
-  <div class="prayer">
-    <p><em>"God, grant me the serenity to accept the things I cannot change,</em></p>
-    <p><em>courage to change the things I can,</em></p>
-    <p><em>and wisdom to know the difference."</em></p>
-  </div>
-
-  <h1 class="title">Recovery Companion</h1>
-  <p class="subtitle">Track your journey. Write your thoughts. Heal every day.</p>
-  <button class="button" onclick="alert('Continue to Home Page (feature coming soon)')">Get Started</button>
+  <h1>Recovery Companion</h1>
+  <p>
+    “God, grant me the serenity to accept the things I cannot change,  
+    the courage to change the things I can,  
+    and the wisdom to know the difference.”
+  </p>
+  <footer>Track your healing journey. One day at a time.</footer>
 </body>
 </html>
