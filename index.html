@@ -4,184 +4,163 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Recovery Companion</title>
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600&family=Open+Sans&display=swap" rel="stylesheet">
   <style>
     * {
-      box-sizing: border-box;
-      font-family: 'DM Sans', sans-serif;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1950&q=80');
+      font-family: 'Open Sans', sans-serif;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
       background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      backdrop-filter: blur(3px);
       min-height: 100vh;
-      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
       color: #333;
+      backdrop-filter: blur(4px);
     }
 
     .container {
-      max-width: 600px;
-      margin: auto;
       background-color: rgba(255, 255, 255, 0.92);
       border-radius: 16px;
-      box-shadow: 0 4px 25px rgba(0,0,0,0.1);
       padding: 30px;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 30px;
+      max-width: 700px;
+      width: 100%;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
     }
 
     h1 {
-      font-size: 2.3rem;
-      color: #004d40;
+      font-family: 'Lora', serif;
+      font-size: 2.5rem;
+      color: #2e3b4e;
+      text-align: center;
       margin-bottom: 10px;
     }
 
-    .serenity {
-      font-size: 1rem;
-      font-style: italic;
+    .subheading {
+      font-size: 1.1rem;
       color: #555;
-    }
-
-    section {
-      margin-top: 25px;
+      text-align: center;
+      margin-bottom: 30px;
+      line-height: 1.6;
     }
 
     label {
+      font-weight: 600;
       display: block;
-      margin-bottom: 8px;
-      font-weight: 600;
-      color: #333;
+      margin-bottom: 5px;
     }
 
-    input, textarea, select, button {
+    textarea {
       width: 100%;
-      padding: 12px;
-      margin-top: 5px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
+      height: 120px;
+      padding: 15px;
       border-radius: 10px;
+      border: 1px solid #ccc;
       font-size: 1rem;
+      resize: none;
+      margin-bottom: 15px;
     }
 
-    button {
-      background-color: #26a69a;
+    .btn {
+      background-color: #2980b9;
       color: white;
-      font-weight: 600;
+      padding: 10px 20px;
       border: none;
+      border-radius: 6px;
       cursor: pointer;
-      transition: 0.3s ease;
+      font-weight: 600;
+      margin-top: 5px;
+      display: block;
     }
 
-    button:hover {
-      background-color: #00796b;
+    .quote {
+      font-style: italic;
+      margin: 15px 0;
+      font-size: 1rem;
+      color: #2c3e50;
     }
 
-    #quote {
-      margin-top: 10px;
-      font-weight: 500;
-      color: #444;
+    input[type="range"] {
+      width: 100%;
+      margin-bottom: 10px;
     }
 
-    .tracker {
-      margin-top: 10px;
-      font-size: 0.95rem;
+    .mood-value {
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 15px;
     }
 
-    .icon-label {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-
-    .icon-label span {
-      font-size: 1.2rem;
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #888;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <header>
-      <h1>Recovery Companion</h1>
-      <p class="serenity">
-        "God, grant me the serenity to accept the things I cannot change,<br>
-        courage to change the things I can,<br>
-        and wisdom to know the difference."
-      </p>
-    </header>
+    <h1>Your Recovery Companion</h1>
+    <p class="subheading">This is your safe space to breathe, reflect, and heal—one honest word at a time.</p>
 
-    <section>
-      <div class="icon-label">
-        <span>📊</span><label for="mood">Daily Mood Tracker</label>
-      </div>
-      <select id="mood">
-        <option value="Calm">Calm</option>
-        <option value="Anxious">Anxious</option>
-        <option value="Motivated">Motivated</option>
-        <option value="Struggling">Struggling</option>
-      </select>
-    </section>
+    <label for="mood">How are you feeling today?</label>
+    <input type="range" id="mood" min="1" max="10" value="5" />
+    <div class="mood-value">Mood: <span id="moodValue">5</span>/10</div>
 
-    <section>
-      <div class="icon-label">
-        <span>📝</span><label for="diary">Write in your Diary</label>
-      </div>
-      <textarea id="diary" rows="5" placeholder="Write your thoughts..."></textarea>
-      <button onclick="saveEntry()">💾 Save Entry</button>
-      <div class="tracker" id="savedDiary"></div>
-    </section>
+    <label for="entry">Write your thoughts below</label>
+    <textarea id="entry" placeholder="How are you feeling today? Pour it all out..."></textarea>
+    <button class="btn" onclick="saveEntry()">Save Entry</button>
 
-    <section>
-      <div class="icon-label">
-        <span>💬</span><label>Daily Recovery Quote</label>
-      </div>
-      <button onclick="generateQuote()">🎯 Get a Quote</button>
-      <p id="quote"></p>
-    </section>
+    <div class="quote" id="quote">"Recovery is not a race. You don’t have to feel guilty if it takes you longer than you thought it would."</div>
+    <button class="btn" onclick="generateQuote()">Inspire Me</button>
   </div>
 
+  <footer>
+    &copy; 2025 Recovery Companion — Built with healing in mind.
+  </footer>
+
   <script>
-    function generateQuote() {
-      const quotes = [
-        "One day at a time.",
-        "Your story isn’t over yet.",
-        "Recovery is a journey, not a destination.",
-        "Every step forward is a victory.",
-        "Healing is not linear — keep going.",
-        "Breathe. You're doing the best you can."
-      ];
-      const randomIndex = Math.floor(Math.random() * quotes.length);
-      document.getElementById("quote").textContent = quotes[randomIndex];
-    }
+    const moodInput = document.getElementById('mood');
+    const moodValue = document.getElementById('moodValue');
+    const entryBox = document.getElementById('entry');
+    const quoteBox = document.getElementById('quote');
+
+    moodInput.addEventListener('input', () => {
+      moodValue.textContent = moodInput.value;
+    });
 
     function saveEntry() {
-      const mood = document.getElementById("mood").value;
-      const diary = document.getElementById("diary").value;
-      const entry = `Mood: ${mood} | Diary: ${diary} | Saved at: ${new Date().toLocaleString()}`;
-      localStorage.setItem("recoveryEntry", entry);
-      displaySavedEntry();
+      const today = new Date().toLocaleDateString();
+      const entry = {
+        mood: moodInput.value,
+        text: entryBox.value,
+        date: today
+      };
+      localStorage.setItem('entry_' + today, JSON.stringify(entry));
+      alert('Your entry has been saved.');
+      entryBox.value = '';
     }
 
-    function displaySavedEntry() {
-      const saved = localStorage.getItem("recoveryEntry");
-      if (saved) {
-        document.getElementById("savedDiary").textContent = `🗂️ Last saved: ${saved}`;
-      }
+    function generateQuote() {
+      const quotes = [
+        "Healing isn’t about becoming the best version of yourself. It’s about letting the softest part of you breathe again.",
+        "Your story isn't over yet.",
+        "Take it one hour at a time. That’s still progress.",
+        "You’re not broken. You’re healing.",
+        "Even slow steps count as forward movement.",
+        "Your past does not define your future. You do.",
+        "Some days, surviving is the bravest thing you’ll do."
+      ];
+      const random = Math.floor(Math.random() * quotes.length);
+      quoteBox.textContent = `"${quotes[random]}"`;
     }
-
-    // Load on refresh
-    displaySavedEntry();
   </script>
 </body>
 </html>
