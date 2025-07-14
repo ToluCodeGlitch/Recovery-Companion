@@ -4,167 +4,184 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Recovery Companion</title>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Nunito&display=swap" rel="stylesheet">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
-    body {
+    * {
+      box-sizing: border-box;
+      font-family: 'DM Sans', sans-serif;
       margin: 0;
-      font-family: 'Nunito', sans-serif;
-      background: linear-gradient(to top right, #e6f1ec, #f9f9f9);
+      padding: 0;
+    }
+
+    body {
+      background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1950&q=80');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      backdrop-filter: blur(3px);
+      min-height: 100vh;
+      padding: 20px;
       color: #333;
     }
 
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background-color: rgba(255, 255, 255, 0.92);
+      border-radius: 16px;
+      box-shadow: 0 4px 25px rgba(0,0,0,0.1);
+      padding: 30px;
+    }
+
     header {
-      background: #cbe0d4;
-      padding: 3rem 1rem;
       text-align: center;
-      border-bottom: 1px solid #d0d0d0;
+      margin-bottom: 30px;
     }
 
-    header h1 {
-      font-family: 'Merriweather', serif;
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
+    h1 {
+      font-size: 2.3rem;
+      color: #004d40;
+      margin-bottom: 10px;
     }
 
-    header p {
+    .serenity {
       font-size: 1rem;
       font-style: italic;
-    }
-
-    main {
-      max-width: 700px;
-      margin: 2rem auto;
-      padding: 1rem;
+      color: #555;
     }
 
     section {
-      background: #ffffff;
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+      margin-top: 25px;
     }
 
-    h2 {
-      font-family: 'Merriweather', serif;
-      color: #2c4d46;
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #333;
     }
 
-    input[type="text"], textarea, select {
+    input, textarea, select, button {
       width: 100%;
-      padding: 0.7rem;
-      border-radius: 8px;
+      padding: 12px;
+      margin-top: 5px;
+      margin-bottom: 15px;
       border: 1px solid #ccc;
-      margin-top: 0.5rem;
-      margin-bottom: 1rem;
+      border-radius: 10px;
       font-size: 1rem;
-      font-family: 'Nunito', sans-serif;
     }
 
     button {
-      background: #5ca08e;
+      background-color: #26a69a;
       color: white;
-      padding: 0.7rem 1.2rem;
+      font-weight: 600;
       border: none;
-      border-radius: 8px;
       cursor: pointer;
-      font-size: 1rem;
+      transition: 0.3s ease;
     }
 
     button:hover {
-      background: #4b8b7b;
+      background-color: #00796b;
     }
 
-    .quote-box {
-      font-style: italic;
-      color: #555;
-      margin-top: 1rem;
+    #quote {
+      margin-top: 10px;
+      font-weight: 500;
+      color: #444;
     }
 
-    footer {
-      text-align: center;
-      font-size: 0.9rem;
-      color: #aaa;
-      margin-bottom: 2rem;
+    .tracker {
+      margin-top: 10px;
+      font-size: 0.95rem;
+    }
+
+    .icon-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .icon-label span {
+      font-size: 1.2rem;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Recovery Companion</h1>
-    <p>"God, grant me the serenity to accept the things I cannot change..."</p>
-  </header>
+  <div class="container">
+    <header>
+      <h1>Recovery Companion</h1>
+      <p class="serenity">
+        "God, grant me the serenity to accept the things I cannot change,<br>
+        courage to change the things I can,<br>
+        and wisdom to know the difference."
+      </p>
+    </header>
 
-  <main>
     <section>
-      <h2>🌤️ How are you feeling today?</h2>
-      <select id="mood-select">
-        <option value="">Choose your mood</option>
+      <div class="icon-label">
+        <span>📊</span><label for="mood">Daily Mood Tracker</label>
+      </div>
+      <select id="mood">
         <option value="Calm">Calm</option>
         <option value="Anxious">Anxious</option>
-        <option value="Hopeful">Hopeful</option>
-        <option value="Overwhelmed">Overwhelmed</option>
         <option value="Motivated">Motivated</option>
+        <option value="Struggling">Struggling</option>
       </select>
-      <button onclick="saveMood()">Save Mood</button>
-      <p id="saved-mood"></p>
     </section>
 
     <section>
-      <h2>📝 Diary Entry</h2>
-      <textarea id="diary" rows="6" placeholder="Write about your day..."></textarea>
-      <button onclick="saveDiary()">Save Entry</button>
-      <p id="save-status"></p>
+      <div class="icon-label">
+        <span>📝</span><label for="diary">Write in your Diary</label>
+      </div>
+      <textarea id="diary" rows="5" placeholder="Write your thoughts..."></textarea>
+      <button onclick="saveEntry()">💾 Save Entry</button>
+      <div class="tracker" id="savedDiary"></div>
     </section>
 
     <section>
-      <h2>💬 Daily Quote</h2>
-      <button onclick="generateQuote()">Generate Quote</button>
-      <div class="quote-box" id="quote-box">"Start by doing what's necessary; then do what's possible; and suddenly you are doing the impossible."</div>
+      <div class="icon-label">
+        <span>💬</span><label>Daily Recovery Quote</label>
+      </div>
+      <button onclick="generateQuote()">🎯 Get a Quote</button>
+      <p id="quote"></p>
     </section>
-  </main>
-
-  <footer>
-    Recovery Companion © 2025
-  </footer>
+  </div>
 
   <script>
-    const quotes = [
-      "Start by doing what's necessary; then do what's possible; and suddenly you are doing the impossible.",
-      "Small steps every day. You don't have to see the whole staircase.",
-      "Healing is not linear. It's okay to feel everything.",
-      "Your worst day only lasts 24 hours.",
-      "There’s light at the end of the tunnel — keep walking."
-    ];
-
     function generateQuote() {
-      const random = Math.floor(Math.random() * quotes.length);
-      document.getElementById("quote-box").innerText = quotes[random];
+      const quotes = [
+        "One day at a time.",
+        "Your story isn’t over yet.",
+        "Recovery is a journey, not a destination.",
+        "Every step forward is a victory.",
+        "Healing is not linear — keep going.",
+        "Breathe. You're doing the best you can."
+      ];
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      document.getElementById("quote").textContent = quotes[randomIndex];
     }
 
-    function saveDiary() {
-      const diaryText = document.getElementById("diary").value;
-      localStorage.setItem("diaryEntry", diaryText);
-      document.getElementById("save-status").innerText = "💾 Saved!";
+    function saveEntry() {
+      const mood = document.getElementById("mood").value;
+      const diary = document.getElementById("diary").value;
+      const entry = `Mood: ${mood} | Diary: ${diary} | Saved at: ${new Date().toLocaleString()}`;
+      localStorage.setItem("recoveryEntry", entry);
+      displaySavedEntry();
     }
 
-    function saveMood() {
-      const mood = document.getElementById("mood-select").value;
-      if (mood) {
-        localStorage.setItem("dailyMood", mood);
-        document.getElementById("saved-mood").innerText = "✅ Mood saved: " + mood;
-      } else {
-        document.getElementById("saved-mood").innerText = "❗ Please select a mood.";
+    function displaySavedEntry() {
+      const saved = localStorage.getItem("recoveryEntry");
+      if (saved) {
+        document.getElementById("savedDiary").textContent = `🗂️ Last saved: ${saved}`;
       }
     }
 
-    // Load saved data on page load
-    window.onload = () => {
-      const savedDiary = localStorage.getItem("diaryEntry");
-      const savedMood = localStorage.getItem("dailyMood");
-      if (savedDiary) document.getElementById("diary").value = savedDiary;
-      if (savedMood) document.getElementById("saved-mood").innerText = "✅ Mood saved: " + savedMood;
-    };
+    // Load on refresh
+    displaySavedEntry();
   </script>
 </body>
 </html>
