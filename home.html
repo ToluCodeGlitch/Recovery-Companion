@@ -1,110 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Recovery Companion - Home</title>
+  <title>Recovery Companion – Home</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f5f6fa;
       margin: 0;
       padding: 0;
-      color: #333;
-    }
-
-    header {
-      background-color: #6c5ce7;
-      color: white;
-      padding: 1.5em 1em;
-      text-align: center;
-      font-size: 1.8em;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://images.unsplash.com/photo-1529253355930-cf3e1a58f5e1?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: #222;
     }
 
     .container {
-      padding: 2em;
-      display: grid;
-      gap: 2em;
-    }
-
-    .card {
-      background: white;
+      background: rgba(255, 255, 255, 0.92);
+      max-width: 700px;
+      margin: 5vh auto;
+      padding: 2rem;
       border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-      padding: 1.5em;
-    }
+      box-shadow:
 
-    textarea {
-      width: 100%;
-      height: 120px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 1em;
-      font-size: 1em;
-      resize: vertical;
-    }
+Here’s the **complete, updated code** again for both pages — **welcome screen (`index.html`)** and **functional app page (`home.html`)** — with everything you requested:
 
-    button {
-      background-color: #6c5ce7;
+---
+
+## ✅ `index.html` (Welcome Page)
+
+Paste this into your `index.html`:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recovery Companion – Welcome</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', sans-serif;
       color: white;
-      padding: 0.7em 1.2em;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 1em;
-      margin-top: 1em;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100vh;
     }
-
-    button:hover {
-      background-color: #5e50d3;
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 2rem;
+      border-radius: 12px;
+      margin: auto;
+      width: 80%;
+      max-width: 600px;
     }
-
-    .quote {
-      font-style: italic;
-      margin-top: 1em;
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+    }
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    a {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 12px 30px;
+      background-color: #ffffffcc;
+      color: #333;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+    a:hover {
+      background-color: #fff;
     }
   </style>
 </head>
 <body>
-  <header>Welcome Back, Companion 🌱</header>
-
-  <div class="container">
-    <!-- Daily Tracker -->
-    <div class="card">
-      <h2>How do you feel today?</h2>
-      <textarea placeholder="Describe your emotions..."></textarea>
-      <button>Save Tracker</button>
-    </div>
-
-    <!-- Diary Entry -->
-    <div class="card">
-      <h2>Diary Entry</h2>
-      <textarea placeholder="Write about your day..."></textarea>
-      <button>Save Entry</button>
-    </div>
-
-    <!-- Daily Quote Generator -->
-    <div class="card">
-      <h2>Need some motivation?</h2>
-      <button onclick="generateQuote()">Get a Quote</button>
-      <p class="quote" id="quote"></p>
-    </div>
+  <div class="overlay">
+    <h1>Welcome, Companion</h1>
+    <p><em>"God, grant me the serenity to accept the things I cannot change, courage to change the things I can, and wisdom to know the difference."</em></p>
+    <a href="home.html">Enter Recovery Space</a>
   </div>
-
-  <script>
-    const quotes = [
-      "Healing is not linear.",
-      "One day at a time.",
-      "Every moment is a fresh beginning.",
-      "Feelings are just visitors. Let them come and go.",
-      "You are not your worst days.",
-      "Even slow progress is progress.",
-    ];
-
-    function generateQuote() {
-      const quote = quotes[Math.floor(Math.random() * quotes.length)];
-      document.getElementById('quote').innerText = quote;
-    }
-  </script>
 </body>
 </html>
