@@ -1,94 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Recovery Companion – Home</title>
+  <title>Recovery Space</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: url('https://images.unsplash.com/photo-1529253355930-cf3e1a58f5e1?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
-      background-size: cover;
       color: #222;
+      background-image: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=1400&q=80');
+      background-size: cover;
+      background-position: center;
+      backdrop-filter: blur(4px);
+      min-height: 100vh;
+      padding: 20px;
     }
 
     .container {
-      background: rgba(255, 255, 255, 0.92);
-      max-width: 700px;
-      margin: 5vh auto;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow:
-
-Here’s the **complete, updated code** again for both pages — **welcome screen (`index.html`)** and **functional app page (`home.html`)** — with everything you requested:
-
----
-
-## ✅ `index.html` (Welcome Page)
-
-Paste this into your `index.html`:
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Recovery Companion – Welcome</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed;
-      background-size: cover;
-      font-family: 'Segoe UI', sans-serif;
-      color: white;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      height: 100vh;
-    }
-    .overlay {
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 2rem;
-      border-radius: 12px;
-      margin: auto;
-      width: 80%;
       max-width: 600px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
+
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      letter-spacing: 1px;
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: #3b3b3b;
     }
-    p {
-      font-size: 1.1rem;
-      line-height: 1.6;
+
+    .quote {
+      font-style: italic;
+      font-size: 16px;
+      margin: 15px 0;
+      color: #555;
     }
+
+    textarea {
+      width: 100%;
+      height: 120px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      resize: none;
+      font-size: 15px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      background-color: #5c5470;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
+    button:hover {
+      background-color: #4a4560;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+
     a {
       display: inline-block;
-      margin-top: 2rem;
-      padding: 12px 30px;
-      background-color: #ffffffcc;
-      color: #333;
-      text-decoration: none;
+      margin-top: 20px;
+      color: #4a2d7c;
+      text-decoration: underline;
+    }
+
+    .section-title {
+      font-size: 18px;
+      margin-top: 20px;
       font-weight: bold;
-      border-radius: 8px;
-      transition: background-color 0.3s;
     }
-    a:hover {
-      background-color: #fff;
+
+    .mood {
+      font-size: 22px;
     }
+
   </style>
 </head>
 <body>
-  <div class="overlay">
-    <h1>Welcome, Companion</h1>
-    <p><em>"God, grant me the serenity to accept the things I cannot change, courage to change the things I can, and wisdom to know the difference."</em></p>
-    <a href="./index.html">← Back to Welcome</a>
+  <div class="container">
+    <h1>Welcome back, Companion</h1>
+
+    <p class="section-title">🧠 Daily Quote</p>
+    <div class="quote" id="quote">Loading your quote...</div>
+
+    <p class="section-title">🌤️ Mood Tracker</p>
+    <select id="mood">
+      <option value="">How are you feeling today?</option>
+      <option>😊 Happy</option>
+      <option>😞 Sad</option>
+      <option>😠 Angry</option>
+      <option>😌 Calm</option>
+      <option>😔 Lonely</option>
+      <option>😰 Anxious</option>
+      <option>😴 Tired</option>
+      <option>😎 Confident</option>
+    </select>
+
+    <p class="section-title">📖 Write your thoughts</p>
+    <textarea id="diary" placeholder="How are you feeling today? Write it all down here..."></textarea>
+    <button onclick="saveEntry()">Save Entry</button>
+
+    <a href="index.html">← Go back to Welcome Page</a>
   </div>
+
+  <script>
+    // Load quote
+    const quotes = [
+      "Every day is a chance to begin again.",
+      "Your story isn’t over yet.",
+      "Healing doesn’t mean the damage never existed. It means it no longer controls your life.",
+      "You’ve been through a lot. Breathe. Rest. Reset.",
+      "There is hope, even when your brain tells you there isn’t."
+    ];
+
+    const quoteBox = document.getElementById("quote");
+    const randomQuote = quotes[new Date().getDate() % quotes.length];
+    quoteBox.textContent = `"${randomQuote}"`;
+
+    // Load from local storage
+    window.onload = () => {
+      document.getElementById("diary").value = localStorage.getItem("diary") || "";
+      document.getElementById("mood").value = localStorage.getItem("mood") || "";
+    };
+
+    function saveEntry() {
+      const diary = document.getElementById("diary").value;
+      const mood = document.getElementById("mood").value;
+      localStorage.setItem("diary", diary);
+      localStorage.setItem("mood", mood);
+      alert("Your entry has been saved.");
+    }
+  </script>
 </body>
 </html>
